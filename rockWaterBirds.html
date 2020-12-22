@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>owww sommm game</title>
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+	<style type="text/css">
+		
+
+		body{
+
+			background-color: orange;
+		}
+
+		div{
+			text-align: center;
+		}
+	
+		button{
+			    background-color: red; 
+                border: 20px black;
+                border-radius: 10px; 
+                color: white; 
+                padding: 10px 24px; 
+                cursor: wait; 
+                
+                text-align: center;
+                font-size: 30px;
+                font-family: sans-serif;
+		       }
+		
+        h1 {
+        	font-family: 'Bangers', cursive;
+        	text-align: center;
+
+        }
+		h2 {
+               font-family: monospace;
+			   text-align: center;
+         text-transform: uppercase;
+         font-size: 30px;
+
+		      }
+	   
+	</style>
+</head>
+<body>
+
+	<h1>Oooooowwww sommmmm!!!</h1>
+
+	<br>
+	<br>
+
+	<h2>Chooose your weapon &#128299;</h2>
+
+	<br>
+	<br>
+   <div>
+
+     <span style='font-size:200px; text-align: right;'>&#129413;</span>
+
+     <span style='font-size:200px;text-align: center;'>&#127754;</span>
+
+     <span style='font-size:200px;'>&#128511;</span>
+
+   </div>
+
+      <div>
+      	
+      	<button  onclick="select('Burung')">Burung</button>
+   
+      	<button  onclick="select('Air')">Air</button>
+
+      	<button  onclick="select('Batu')">Batu</button>
+
+      </div>
+
+       <script type="text/javascript">
+
+    	
+      var myScore = 0;
+      var compScore = 0;
+
+    	function select(weapon){
+
+        var weapons=["Burung","Air","Batu"]
+
+    		var computerSelection = Math.floor(Math.random()*3)
+            
+            var compWeapon = weapons[computerSelection]
+           
+            if (weapon=="Batu"){
+            	if(compWeapon == "Batu"){
+            		alert("Computer select " + compWeapon+ " .It's a draw. "+
+                  "Computer : "+compScore+" Your Score : "+myScore);
+            
+            	}
+            	else if (compWeapon == "Air"){
+                     compScore++;
+                     alert("Computer select " + compWeapon + " .You lose!! "+
+                      "Computer : "+compScore+" Your Score : "+myScore);
+                     
+            	}else
+            	     {
+                      myScore++;
+            		      alert("Computer select " + compWeapon + " .You win!! "+
+                        "Computer : "+compScore+" Your Score : "+myScore);
+                      
+
+
+            	}
+
+           }
+           if (weapon == "Air"){
+            	if(compWeapon=="Batu"){
+                myScore++;
+           		  alert("Computer select " + compWeapon + " .You win!! "+
+                        "Computer : "+compScore+" Your Score : "+myScore);
+
+            	}
+            	else if (compWeapon=="Air"){
+           		alert("Computer select " + compWeapon+ " .It's a draw. "+
+                  "Computer : "+compScore+" Your Score : "+myScore);
+
+            	}
+            	else {
+              compScore++;
+             alert("Computer select " + compWeapon + " .You lose!! "+
+                      "Computer : "+compScore+" Your Score : "+myScore);
+      
+                     }
+              }
+           if (weapon == "Burung") {
+           	     if(compWeapon=="Batu"){
+                  compScore++;
+           		    alert("Computer select " + compWeapon + " .You lose!! "+
+                      "Computer : "+compScore+" Your Score : "+myScore);
+
+           	     }
+
+             	else if (compWeapon=="Air"){
+                myScore++;
+           	  	 alert("Computer select " + compWeapon + " .You win!! "+
+                        "Computer : "+compScore+" Your Score : "+myScore);
+             	}
+            	else {
+           		alert("Computer select " + compWeapon+ " .It's a draw. "+
+                  "Computer : "+compScore+" Your Score : "+myScore);
+
+            	}
+                }
+	          }
+     
+      </script>
+  </body>
+</html>
