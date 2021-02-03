@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+</head>
+
+   <style type="text/css">
+     *{
+          margin:0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body{
+          font-family: "Nunito",sans-serif;
+          background: #f8f8f8;
+        }
+
+        .input{
+          text-align: center;
+          margin: 100px auto;
+        }
+
+        input[type="submit"]{
+          padding: 15px 30px;
+          background: #e7e7e7;
+          border: none;
+          border-radius: 1px;
+          font-family: "Nunito",sans-serif;
+          font-weight:bold;
+          font-size: 20px;
+        }
+
+        .input input[type="text"]{
+          width: 600px;
+          height: 55px;
+          padding: 5px 10px;
+          background: #e7e7e7;
+          border: none;
+          border-radius: 1px;
+          font-family: "Nunito",sans-serif;
+          font-weight:bold;
+          font-size: 20px;
+        }
+
+        .card{
+          width: 50%;
+          background: #e7e7e7;
+          height: 40vh;
+          margin: 50px auto;
+          border-radius: 2px;
+        }
+
+
+        .close{
+          float: right;
+          margin-top: -2px;
+          cursor: pointer;
+          margin-right: 20px;
+        }
+
+        .card h1{
+          padding: 5px 0;
+          text-align: center;
+        }
+
+        .card p{
+          text-align: center;
+          margin:40px 0;
+          font-size:20px;
+        }
+   </style>
+<body>
+
+    <div class="input">
+      <h1 style="text-align:center;margin-bottom:30px;">Weather App</h1>
+         <input type="text" placeholder="Enter the city" class="input_text">
+         <input type="submit" value="Submit" class="submit">
+    </div>
+   
+
+    <div class="container">
+      <div class="card">
+        <h1 class="name" id="name"></h1>
+        <p class="temp"></p>
+        <p class="clouds"></p>
+        <p class="desc"></p>
+      </div>
+    </div>
+
+  <script type="text/javascript">
+        var input = document.querySelector('.input_text');
+        var main = document.querySelector('#name');
+        var temp = document.querySelector('.temp');
+        var desc = document.querySelector('.desc');
+        var clouds = document.querySelector('.clouds');
+        var button= document.querySelector('.submit');
+
+
+        button.addEventListener('click', function(name){
+        fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=d5f70abeed23498929c72bbb3fab1733')
+        .then(response => response.json())
+        .then(data => {
+          var tempValue = data['main']['temp'];
+          var nameValue = data['name'];
+          var descValue = data['weather'][0]['description'];
+
+          main.innerHTML = nameValue;
+          desc.innerHTML = "Desc - "+descValue;
+          temp.innerHTML = "Temp - "+(tempValue-273)+" &deg C";
+          input.value ="";
+
+        })
+
+        .catch(err => alert("Wrong city name!"));
+        })
+  </script>
+</body>
+</html>
