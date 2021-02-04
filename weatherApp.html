@@ -30,6 +30,9 @@
           font-weight:bold;
           font-size: 20px;
         }
+        input[type="submit"]:hover{
+          border:1px black solid;
+        }
 
         .input input[type="text"]{
           width: 600px;
@@ -46,7 +49,7 @@
         .card{
           width: 50%;
           background: #e7e7e7;
-          height: 40vh;
+          height: 70vh;
           margin: 50px auto;
           border-radius: 2px;
         }
@@ -63,10 +66,11 @@
           padding: 5px 0;
           text-align: center;
         }
+        
 
         .card p{
           text-align: center;
-          margin:40px 0;
+          margin:50px 0;
           font-size:20px;
         }
    </style>
@@ -83,8 +87,11 @@
       <div class="card">
         <h1 class="name" id="name"></h1>
         <p class="temp"></p>
+        <p class="feels"></p>
         <p class="clouds"></p>
         <p class="desc"></p>
+        <p class="pressure"></p> 
+        <p class="vis"></p>       
       </div>
     </div>
 
@@ -92,8 +99,11 @@
         var input = document.querySelector('.input_text');
         var main = document.querySelector('#name');
         var temp = document.querySelector('.temp');
+        var feels = document.querySelector('.feels');
         var desc = document.querySelector('.desc');
         var clouds = document.querySelector('.clouds');
+        var press = document.querySelector('.pressure');
+        var vis = document.querySelector('.vis');
         var button= document.querySelector('.submit');
 
 
@@ -104,11 +114,19 @@
           var tempValue = data['main']['temp'];
           var nameValue = data['name'];
           var descValue = data['weather'][0]['description'];
+          var pressValue = data['main']['pressure'];
+          var visValue = data['visibility'];
+          var feelsValue = data['main']['feels_like'];
+
 
           main.innerHTML = nameValue;
           desc.innerHTML = "Desc - "+descValue;
           temp.innerHTML = "Temp - "+(tempValue-273)+" &deg C";
-          input.value ="";
+          feels.innerHTML = "Feels like - "+(feelsValue-273)+" &deg C";
+          vis.innerHTML = "Visibility - "+(visValue/1000)+"km";
+          press.innerHTML = "Pressure - "+pressValue + " Hpa";
+
+          input.value = "";
 
         })
 
